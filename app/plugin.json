@@ -1,0 +1,13 @@
+{
+	"pluginName": "Finder",
+	"description": "uTools 在 MacOS 下的文件搜索插件",
+	"version": "0.0.1",
+	"main": "index.html",
+	"preload": "preload.js",
+	"features": [
+	    {
+	        "code": "f",
+	        "cmds":["f"]
+	    }
+	]
+}

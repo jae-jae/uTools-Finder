@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "dev": "concurrently 'vue-cli-service build --watch --mode development' 'wait-on dist && cp -r app/* dist'",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -16,9 +17,13 @@
     "@vue/cli-plugin-eslint": "^3.6.0",
     "@vue/cli-service": "^3.6.0",
     "babel-eslint": "^10.0.1",
+    "concurrently": "^4.1.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
-    "vue-template-compiler": "^2.5.21"
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.5.21",
+    "wait-on": "^3.2.0"
   },
   "eslintConfig": {
     "root": true,
