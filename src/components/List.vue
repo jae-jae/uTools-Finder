@@ -2,6 +2,7 @@
   <div class="list">
     <ListItem
       @mouseover.native="mouseOver(index)"
+      @click.native="keyEnter"
       v-for="(item,index) in list"
       :key="item.path"
       :item="item"
@@ -34,10 +35,11 @@ export default {
   methods: {
     bindKeybordEvent () {
       document.addEventListener('keydown', (event) => {
-        console.log(event.which)
+        // console.log(event.which)
         const handlers = {
           '38': this.keyUp,
-          '40': this.keyDown
+          '40': this.keyDown,
+          '13': this.keyEnter
         }
         const handler = handlers[event.which]
         handler && handler()
@@ -52,6 +54,11 @@ export default {
       if (this.selectedIndex - 1 >= 0) {
         this.selectedIndex--
       }
+    },
+    keyEnter () {
+      console.log(this.selectedIndex, this.list[this.selectedIndex])
+      const file = this.list[this.selectedIndex].path
+      Tools.openFile(file)
     },
     mouseOver (index) {
       this.selectedIndex = index

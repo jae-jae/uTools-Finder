@@ -10,7 +10,8 @@ module.exports = {
     extends: 'standard',
     globals: {
         Finder: true,
-        utools: true
+        utools: true,
+        Tools: true
     },
     plugins: [
         'vue',

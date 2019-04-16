@@ -59,30 +59,32 @@ export default {
       utools.setExpendHeight(500)
     },
     inputChange (text) {
-      console.log('---')
       console.log(text)
+      this.fileStream && this.fileStream.destroy()
       if (text.trim()) {
         this.loading = true
         this.list = []
-        this.fileStream && this.fileStream.destroy()
         this.fileStream = Finder.filter(text)
         this.fileStream
           .on('data', data => {
-            this.loading = false
             console.log('on data')
+            this.loading = false
             this.list.push(Finder.item(data))
             this.fileStream.destroy()
           })
           .on('end', () => {
+            console.log('find end!')
             this.loading = false
-            console.log('file end')
           })
-          .on('error', () => {
+          .on('error', (error) => {
+            console.log('find error:', error)
             this.loading = false
-            console.log('file error')
           })
+      } else {
+        console.log('hide')
+        this.loading = false
+        this.hidePanel()
       }
-      console.log(text + ' ' + 'end2')
     }
   }
 }
