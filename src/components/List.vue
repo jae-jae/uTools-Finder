@@ -1,38 +1,63 @@
 <template>
-  <div class="list" v-on:keydown.down="keyDown" v-on:keydown.up="keyUp" tabindex="0">
-    <ListItem v-for="(item,index) in list" :key="item.path" :item="item" :class="{ selected: selectedIndex === index }" />
+  <div class="list">
+    <ListItem
+      @mouseover.native="mouseOver(index)"
+      v-for="(item,index) in list"
+      :key="item.path"
+      :item="item"
+      :class="{ selected: selectedIndex === index }"
+    />
   </div>
 </template>
 
 <script>
-import ListItem from "./ListItem";
+import ListItem from './ListItem'
 export default {
-  name: "List",
+  name: 'List',
   components: {
     ListItem
   },
   props: ['list'],
-  data() {
+  data () {
     return {
       selectedIndex: 0
-    };
+    }
   },
   mounted () {
-
+    this.bindKeybordEvent()
+  },
+  watch: {
+    list () {
+      this.selectedIndex = 0
+    }
   },
   methods: {
-      keyDown () {
-          if (this.selectedIndex + 1 < this.list.length) {
-              this.selectedIndex ++
-          }
-      },
-      keyUp () {
-          if (this.selectedIndex - 1 >= 0) {
-              this.selectedIndex --
-          }
+    bindKeybordEvent () {
+      document.addEventListener('keydown', (event) => {
+        console.log(event.which)
+        const handlers = {
+          '38': this.keyUp,
+          '40': this.keyDown
+        }
+        const handler = handlers[event.which]
+        handler && handler()
+      })
+    },
+    keyDown () {
+      if (this.selectedIndex + 1 < this.list.length) {
+        this.selectedIndex++
       }
+    },
+    keyUp () {
+      if (this.selectedIndex - 1 >= 0) {
+        this.selectedIndex--
+      }
+    },
+    mouseOver (index) {
+      this.selectedIndex = index
+    }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

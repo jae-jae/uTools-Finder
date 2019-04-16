@@ -8,12 +8,12 @@
 
 <script>
 export default {
-  name: "ListItem",
-  props: ["item"],
-  data() {
-    return {};
+  name: 'ListItem',
+  props: ['item'],
+  data () {
+    return {}
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

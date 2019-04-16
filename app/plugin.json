@@ -9,5 +9,9 @@
 	        "code": "f",
 	        "cmds":["f"]
 	    }
-	]
+	],
+	"pluginSetting":{
+        "single": true,
+        "height": 1
+    }
 }
