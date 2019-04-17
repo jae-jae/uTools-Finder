@@ -1,13 +1,18 @@
 {
 	"pluginName": "Finder",
 	"description": "uTools 在 MacOS 下的文件搜索插件",
-	"version": "0.0.1",
+	"version": "1.0.0",
+	"author": "Jaeger",
+    "homepage": "https://github.com/jae-jae",
 	"main": "index.html",
 	"preload": "preload.js",
+	"logo": "icon.png",
+	"platform": ["darwin"],
 	"features": [
 	    {
-	        "code": "f",
-	        "cmds":["f"]
+			"code": "finder",
+			"explain": "Search for files on your Mac and open",
+	        "cmds":["finder","`"]
 	    }
 	],
 	"pluginSetting":{

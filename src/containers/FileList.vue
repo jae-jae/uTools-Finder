@@ -8,6 +8,7 @@
 <script>
 import List from '../components/List'
 import Loading from '../components/Loading'
+import File from '../libs/file'
 export default {
   name: 'FileList',
   components: {
@@ -16,18 +17,7 @@ export default {
   },
   data () {
     return {
-      list: [
-        {
-          img: 'https://s2.ax1x.com/2019/04/15/Aj2Ezd.png',
-          name: 'index.js',
-          path: '/Users/x/Downloads/uTools'
-        },
-        {
-          img: 'https://s2.ax1x.com/2019/04/15/Aj2Ezd.png',
-          name: 'app.php',
-          path: '/Users/x/Downloads/xxxx11'
-        }
-      ],
+      list: [],
       loading: false,
       fileStream: null
     }
@@ -69,7 +59,7 @@ export default {
           .on('data', data => {
             console.log('on data')
             this.loading = false
-            this.list.push(Finder.item(data))
+            this.list.push(File.item(data))
             this.fileStream.destroy()
           })
           .on('end', () => {

@@ -32,6 +32,7 @@ export default {
   .path {
     color: #888888;
     font-size: small;
+    overflow: hidden;
   }
 }
 </style>

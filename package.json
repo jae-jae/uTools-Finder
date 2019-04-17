@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build && cp -r app/* dist && cp README.md dist",
     "dev": "concurrently 'vue-cli-service build --watch --mode development' 'wait-on dist && gulp'",
     "lint": "vue-cli-service lint",
     "lint:fix": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter --fix src"

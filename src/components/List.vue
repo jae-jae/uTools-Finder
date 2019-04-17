@@ -35,17 +35,23 @@ export default {
   methods: {
     bindKeybordEvent () {
       document.addEventListener('keydown', (event) => {
-        // console.log(event.which)
+        console.log(event.which)
         const handlers = {
           '38': this.keyUp,
           '40': this.keyDown,
-          '13': this.keyEnter
+          '13': this.keyEnter,
+          // '37': this.keyLeft,
+          '39': this.keyRight
         }
         const handler = handlers[event.which]
         handler && handler()
       })
     },
+    getSelectedFilePath () {
+      return this.list[this.selectedIndex].path
+    },
     keyDown () {
+      document.querySelector('.list').focus()
       if (this.selectedIndex + 1 < this.list.length) {
         this.selectedIndex++
       }
@@ -56,12 +62,28 @@ export default {
       }
     },
     keyEnter () {
-      console.log(this.selectedIndex, this.list[this.selectedIndex])
-      const file = this.list[this.selectedIndex].path
-      Tools.openFile(file)
+      const path = this.getSelectedFilePath()
+      Tools.openFile(path)
+    },
+    keyRight () {
+      const path = this.getSelectedFilePath()
+      this.flash()
+      Tools.showFile(path)
+    },
+    keyLeft () {
+      const path = this.getSelectedFilePath()
+      Tools.copy(path)
+      this.flash()
     },
     mouseOver (index) {
       this.selectedIndex = index
+    },
+    flash () {
+      const index = this.selectedIndex
+      this.selectedIndex = -1
+      setTimeout(() => {
+         this.selectedIndex = index
+      }, 100)
     }
   }
 }
