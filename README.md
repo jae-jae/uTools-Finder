@@ -1,4 +1,6 @@
-<center>![](https://raw.githubusercontent.com/jae-jae/uTools-Finder/master/app/screenshot.png)</center>
+<div align=center>
+<img src="https://raw.githubusercontent.com/jae-jae/uTools-Finder/master/app/screenshot.png"/>
+</div>
 
 # uTools-Finder
 uTools 在 MacOS 下的文件搜索插件, 基于 Vue.js 技术栈。
