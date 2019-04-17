@@ -39,3 +39,7 @@ yarn dev
 # build
 yarn build
 ```
+
+# License
+
+MIT

@@ -35,7 +35,7 @@ export default {
   methods: {
     bindKeybordEvent () {
       document.addEventListener('keydown', (event) => {
-        console.log(event.which)
+        // console.log(event.which)
         const handlers = {
           '38': this.keyUp,
           '40': this.keyDown,

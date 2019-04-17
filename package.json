@@ -1,7 +1,10 @@
 {
   "name": "utools-finder",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "uTools 在 MacOS 下的文件搜索插件",
+  "author": "Jaeger <JaegerCode@gmail.com>",
+  "homepage": "https://github.com/jae-jae/uTools-Finder",
+  "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build && cp -r app/* dist && cp README.md dist",

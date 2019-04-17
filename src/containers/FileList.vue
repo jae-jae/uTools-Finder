@@ -49,7 +49,6 @@ export default {
       utools.setExpendHeight(500)
     },
     inputChange (text) {
-      console.log(text)
       this.fileStream && this.fileStream.destroy()
       if (text.trim()) {
         this.loading = true
@@ -57,21 +56,17 @@ export default {
         this.fileStream = Finder.filter(text)
         this.fileStream
           .on('data', data => {
-            console.log('on data')
             this.loading = false
             this.list.push(File.item(data))
             this.fileStream.destroy()
           })
           .on('end', () => {
-            console.log('find end!')
             this.loading = false
           })
-          .on('error', (error) => {
-            console.log('find error:', error)
+          .on('error', () => {
             this.loading = false
           })
       } else {
-        console.log('hide')
         this.loading = false
         this.hidePanel()
       }
