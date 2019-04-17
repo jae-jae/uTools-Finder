@@ -3,7 +3,7 @@
 </div>
 
 # uTools-Finder
-uTools 在 MacOS 下的文件搜索插件, 基于 Vue.js 技术栈，并使用了 MacOS 下的 spotlight 文件搜索接口。
+uTools 在 MacOS 下的文件搜索插件, 基于 Vue.js 技术栈，并使用了 MacOS 下的 Spotlight 文件搜索接口。
 
 # 安装
 
