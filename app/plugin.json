@@ -1,7 +1,7 @@
 {
 	"pluginName": "Finder",
 	"description": "uTools 在 MacOS 下的文件搜索插件",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"author": "Jaeger",
     "homepage": "https://github.com/jae-jae",
 	"main": "index.html",

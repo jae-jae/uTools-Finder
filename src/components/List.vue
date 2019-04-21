@@ -25,27 +25,30 @@ export default {
     }
   },
   mounted () {
-    this.bindKeybordEvent()
+    document.addEventListener('keydown', this.keybordEventHandler)
+  },
+  destroyed () {
+    document.removeEventListener('keydown', this.keybordEventHandler)
   },
   watch: {
     list () {
+      window.scroll(0, 0)
       this.selectedIndex = 0
     }
   },
   methods: {
-    bindKeybordEvent () {
-      document.addEventListener('keydown', (event) => {
-        // console.log(event.which)
-        const handlers = {
-          '38': this.keyUp,
-          '40': this.keyDown,
-          '13': this.keyEnter,
-          // '37': this.keyLeft,
-          '39': this.keyRight
-        }
-        const handler = handlers[event.which]
-        handler && handler()
-      })
+    keybordEventHandler (event) {
+      event.preventDefault()
+      // console.log(event.which)
+      const handlers = {
+        '38': this.keyUp,
+        '40': this.keyDown,
+        '13': this.keyEnter,
+        // '37': this.keyLeft,
+        '39': this.keyRight
+      }
+      const handler = handlers[event.which]
+      handler && handler()
     },
     getSelectedFilePath () {
       return this.list[this.selectedIndex].path
@@ -54,6 +57,9 @@ export default {
       document.querySelector('.list').focus()
       if (this.selectedIndex + 1 < this.list.length) {
         this.selectedIndex++
+        if (this.selectedIndex > 9) {
+          window.scrollBy(0, 50)
+        }
       }
     },
     keyUp () {

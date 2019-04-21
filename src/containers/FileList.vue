@@ -46,11 +46,14 @@ export default {
       utools.setExpendHeight(50)
     },
     showPanel () {
-      utools.setExpendHeight(500)
+      const height = this.list.length > 9 ? 500 : this.list.length * 50
+      utools.setExpendHeight(height)
     },
     inputChange (text) {
+      text = text.trim()
+      window.scroll(0, 0)
       this.fileStream && this.fileStream.destroy()
-      if (text.trim()) {
+      if (text) {
         this.loading = true
         this.list = []
         this.fileStream = Finder.filter(text)
@@ -58,6 +61,7 @@ export default {
           .on('data', data => {
             this.loading = false
             this.list.push(File.item(data))
+            this.list = File.sort(text, this.list)
             this.fileStream.destroy()
           })
           .on('end', () => {
