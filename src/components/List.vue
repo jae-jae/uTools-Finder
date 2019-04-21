@@ -54,7 +54,6 @@ export default {
       return this.list[this.selectedIndex].path
     },
     keyDown () {
-      document.querySelector('.list').focus()
       if (this.selectedIndex + 1 < this.list.length) {
         this.selectedIndex++
         if (this.selectedIndex > 9) {

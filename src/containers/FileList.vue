@@ -32,7 +32,7 @@ export default {
     }
   },
   mounted () {
-    utools.onPluginReady(() => {
+    utools.onPluginEnter(() => {
       utools.setSubInput(({ text }) => {
         this.inputChange(text)
       }, '通过文件名或文件内容搜索文件...')
