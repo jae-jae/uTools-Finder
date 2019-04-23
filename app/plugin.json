@@ -8,6 +8,9 @@
 	"preload": "preload.js",
 	"logo": "icon.png",
 	"platform": ["darwin"],
+	"development": {
+		"main": "http://localhost:8080/index.html"
+	},
 	"features": [
 	    {
 			"code": "finder",
